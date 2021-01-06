@@ -1,0 +1,21 @@
+//
+//  Config.swift
+//  myOrder
+//
+//  Created by Geanni Barbulescu on 11/6/20.
+//  Copyright © 2020 Geanni Barbulescu. All rights reserved.
+//
+
+import Foundation
+let BASE_URL = "https://www.dozo.ro/";
+let API_URL = BASE_URL + "clientapi/"
+
+let API_GET_STORES = API_URL + "getStores"
+let API_GET_STORE_CATEGORIES = API_URL + "getstorecategories"
+let API_GET_PRODUCTS  = API_URL + "getproducts"
+
+let API_GET_STORE_IMAGE = API_URL + "getstoreimage"
+let API_GET_CATEGORY_IMAGE = API_URL + "getcategoryimage"
+let API_GET_PRODUCT_IMAGE = API_URL + "getproductimage"
+
+let kUDToken = "token"
