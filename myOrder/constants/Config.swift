@@ -15,7 +15,9 @@ let API_GET_STORE_CATEGORIES = API_URL + "getstorecategories"
 let API_GET_PRODUCTS  = API_URL + "getproducts"
 let API_SEND_SMS = API_URL + "sendsmscode"
 let API_VALIDATE_SMS = API_URL + "validateSMSCode"
+let API_SAVE_CART = API_URL + "savecart"
 
+// Images
 let API_GET_STORE_IMAGE = API_URL + "getstoreimage"
 let API_GET_CATEGORY_IMAGE = API_URL + "getcategoryimage"
 let API_GET_PRODUCT_IMAGE = API_URL + "getproductimage"

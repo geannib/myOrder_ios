@@ -50,6 +50,37 @@ class FinalizareViewController: UIViewController, UITableViewDataSource, UITable
     }
 
     @objc func nextTapped(_ sender:UITapGestureRecognizer){
+        
+        let token:String = (UserDefaults.standard.value(forKey: kUDToken) ?? "") as! String
+        let parameters:[String: String] = [
+            "firebase_uid": token,
+            "store_id" : storeId,
+            "store_address_id" : "",
+            "client_address_id" : "",
+            "payment_type_id" : "",
+            "notes" : "",
+            "products" : ""
+            
+            
+            
+        ]
+        
+        WebWrapper.shared.callAPI(reqType:API_SAVE_CART,
+                                         parameters: parameters,
+                                         methodType: .post,
+                                         showLoader: false,
+                                         completion: { (responseType, response, error) in
+                   
+        if(error == nil){
+                let reqResponse: SaveCartResponse = SaveCartResponse    (JSONString: response ?? "")!
+        }else{
+        
+            print("Error occured on save cart")
+        }
+                   
+                  
+                           
+                   })
            let orderStatus:OrderStatusViewController =
                UIStoryboard(name: "Finalizare", bundle: nil).instantiateViewController(withIdentifier: "OrderStatusViewController") as! OrderStatusViewController
            self.navigationController?.pushViewController(orderStatus, animated: true)

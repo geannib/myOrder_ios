@@ -103,6 +103,7 @@ PODS:
   - GTMSessionFetcher/Core (1.4.0)
   - GTMSessionFetcher/Full (1.4.0):
     - GTMSessionFetcher/Core (= 1.4.0)
+  - JVFloatLabeledTextField (1.2.2)
   - nanopb (1.30905.0):
     - nanopb/decode (= 1.30905.0)
     - nanopb/encode (= 1.30905.0)
@@ -131,6 +132,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Crashlytics
   - GoogleSignIn
+  - JVFloatLabeledTextField
   - ObjectMapper (~> 3.4.2)
   - PhoneNumberKit
   - SDWebImage
@@ -162,6 +164,7 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMAppAuth
     - GTMSessionFetcher
+    - JVFloatLabeledTextField
     - nanopb
     - ObjectMapper
     - PhoneNumberKit
@@ -193,6 +196,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: 39530bc0ad980530298e9c4af8549e991fd033b1
   GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
+  JVFloatLabeledTextField: df48598472ee015701d509f43e59492a0d4ca208
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
   PhoneNumberKit: df411d46177d1492da84e10b6c093846dd861452
@@ -202,6 +206,6 @@ SPEC CHECKSUMS:
   SwiftyGif: e466e86c660d343357ab944a819a101c4127cb40
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 8b28fd10b8baeb13b3d1e132168ad7a00a18cf4a
+PODFILE CHECKSUM: 1183474980f18732d977f14f205a33086a9597df
 
 COCOAPODS: 1.9.3

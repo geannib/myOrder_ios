@@ -20,6 +20,7 @@ target 'myOrder' do
   pod 'BarcodeScanner'
   pod 'BadgeHub'
   pod 'PhoneNumberKit'
+  pod 'JVFloatLabeledTextField'
 
   target 'myOrderTests' do
     inherit! :search_paths

@@ -11,10 +11,10 @@ import UIKit
 import ObjectMapper
 
 
-class RRestaurantsResponse: RAPIBaseResponse {
+class SaveCartResponse: RAPIBaseResponse {
     
     
-    var restaurants: [StorePOJO]?
+    var data: Int?
     var error:RAPIError?
    
     
@@ -22,7 +22,7 @@ class RRestaurantsResponse: RAPIBaseResponse {
         
         super.init(map: map)
         error = nil
-        restaurants = nil
+        data = nil
     }
     
     override func mapping(map: Map) {
@@ -31,7 +31,7 @@ class RRestaurantsResponse: RAPIBaseResponse {
         
         if(resType == "success") {
             
-            restaurants <- map["data", delimiter: ""]
+            data <- map["data", delimiter: ""]
             
         }else
             if(resType == "error"){

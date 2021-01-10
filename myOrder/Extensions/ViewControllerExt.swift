@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 extension UIViewController {
+
     
     static func mainStoryboard() -> UIStoryboard{
         return UIStoryboard(name: "Main", bundle: Bundle.main)
@@ -42,11 +43,15 @@ extension UIViewController {
         return topH
     }
     
-    func setTitleEx(_ title: String, andImage image: UIImage) {
+    func setTitleEx(_ title: String, andImage image: UIImage, target: Any, _ selector: Selector) {
         let titleLbl = UILabel()
         titleLbl.text = title
         titleLbl.textColor = .selgrosWhite
-        titleLbl.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
+        titleLbl.generateAttributedString(fonts: ["Roboto-Bold"],
+        colors: [.white],
+        sizes: [20],
+        texts: [title],
+        alignement: .center)
         let imageView = UIImageView(image: image)
         let viewTitle  = UIView()
        viewTitle.translatesAutoresizingMaskIntoConstraints = false
@@ -62,29 +67,59 @@ extension UIViewController {
         titleLbl.translatesAutoresizingMaskIntoConstraints = false
         viewTitle.addSubview(titleLbl)
         viewTitle.addSubview(imageView)
+        var frm = viewTitle.frame
+        frm = CGRect(origin: frm.origin, size: CGSize(width: 30, height: frm.size.height))
+        viewTitle.frame = frm
         let viewsDictionary = ["label": titleLbl, "image": imageView]
-        viewTitle.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[label]-3-[image]-|", options: [], metrics: nil, views: viewsDictionary))
-        viewTitle.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[image]-|", options: [], metrics: nil, views: viewsDictionary))
-        viewTitle.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[label]-|", options: [], metrics: nil, views: viewsDictionary))
-        let verticalConstraint = NSLayoutConstraint(item: imageView,
-                    attribute: NSLayoutConstraint.Attribute.width,
-                    relatedBy: NSLayoutConstraint.Relation.equal,
-                    toItem: imageView,
-                    attribute: NSLayoutConstraint.Attribute.height,
-                    multiplier: 1,
-                    constant: 0)
-           
-        viewTitle.addConstraints([verticalConstraint])
         
-       // Now the frame is set (you can print it out)
-//       viewTitle.translatesAutoresizingMaskIntoConstraints = true // make nav bar happy
+        // Horizontal
+        viewTitle.addConstraints(NSLayoutConstraint.constraints(
+            withVisualFormat: "H:|-[label]-3-[image]-|",
+            options: [],
+            metrics: nil,
+            views: viewsDictionary))
+        
+        // Vertical
+        viewTitle.addConstraints(NSLayoutConstraint.constraints(
+            withVisualFormat: "V:|-[image]-|",
+            options: [],
+            metrics: nil,
+            views: viewsDictionary))
+        
+        viewTitle.addConstraints(NSLayoutConstraint.constraints(
+            withVisualFormat: "V:|-[label]-|",
+            options: [],
+            metrics: nil,
+            views: viewsDictionary))
+        
+           
+        NSLayoutConstraint.activate([
+            viewTitle.widthAnchor.constraint(equalToConstant: view.frame.width * (2.7/4.0)),
+                       ])
+        NSLayoutConstraint.activate([
+            imageView.widthAnchor.constraint(equalToConstant: topbarHeight),
+            imageView.heightAnchor.constraint(equalToConstant: topbarHeight),
+                   ])
+        //viewTitle.addConstraints([verticalConstraint])
+        
+        let horizontalConstraint = NSLayoutConstraint(item:titleLbl,
+              attribute:.width,
+              relatedBy:.greaterThanOrEqual,
+              toItem:viewTitle,
+              attribute:.width,
+              multiplier:0.4,
+              constant:0);
+              horizontalConstraint.isActive = true
        navigationItem.titleView = viewTitle
         
-        
-        
-        let horizontalConstraint = NSLayoutConstraint(item: imageView, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
+        viewTitle.isUserInteractionEnabled = true
+        let tapCombo = UITapGestureRecognizer(target: target, action: selector)
+        tapCombo.numberOfTapsRequired = 1
+        viewTitle.addGestureRecognizer(tapCombo)
         
        
 
     }
+    
 }
+

@@ -44,11 +44,12 @@ class MyBaseViewController: UIViewController{
              
     }
     
-      @objc func barCodTapped(sender: AnyObject) {
-         let barcodeScanner:MyBarcodeScannerVision = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MyBarcodeScannerVision") as! MyBarcodeScannerVision
-                
-         present(barcodeScanner, animated: true, completion: nil)
-     }
+    
+  @objc func barCodTapped(sender: AnyObject) {
+     let barcodeScanner:MyBarcodeScannerVision = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MyBarcodeScannerVision") as! MyBarcodeScannerVision
+            
+     present(barcodeScanner, animated: true, completion: nil)
+ }
 
     
      @objc func basketTapped(sender: AnyObject) {

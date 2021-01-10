@@ -22,7 +22,6 @@ class SideTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         viewBackground.backgroundColor = .selgrosWhite
-        imageLeft.image = UIImage(named:"plus")
         // Configure the view for the selected state
     }
 

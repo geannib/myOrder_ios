@@ -67,7 +67,7 @@ class ComandaStatusTableViewCell: UITableViewCell {
     func makeup(imgName:String, labelStr:String, upperHidden:Bool, lowerHidden:Bool){
         
         labelState.generateAttributedString(fonts: ["Roboto-Regular"],
-        colors: [.gray],
+        colors: [.gray], 
         sizes: [20],
         texts: [labelStr],
         alignement: .left)

@@ -11,9 +11,13 @@ import FirebaseAuth
 import SideMenu
 
 
-class StoresViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class StoresViewController: UIViewController,
+        UITableViewDelegate,
+        UITableViewDataSource,
+        AdresaProtocol {
     
     var restaurants: [StorePOJO] = []
+    var popupAddress: AdressPopupViewController? = nil
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let screenSize = UIScreen.main.bounds
@@ -26,12 +30,12 @@ class StoresViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.deselectRow(at: indexPath, animated: true)
         
         let categories:CategoriesCollectionViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CategoriesCollectionViewController") as! CategoriesCollectionViewController
-        
-          let sp: StorePOJO = restaurants[indexPath.row]
+
+        let sp: StorePOJO = restaurants[indexPath.row]
         MySession.selStoreId = String(sp.id ?? 0)
         categories.selCat = ""
         categories.storeId = "" + String(sp.id!)
-               self.navigationController?.pushViewController(categories, animated: true)
+        self.navigationController?.pushViewController(categories, animated: true)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -68,14 +72,25 @@ class StoresViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewWillDisappear(animated)
         self.title = ""
     }
+    
+    @objc private func addressClicked() {
+        print(#function)
+        self.popupAddress = UIStoryboard(name: "Address", bundle: nil).instantiateViewController(
+                      withIdentifier: "AdressPopupViewController")
+                      as! AdressPopupViewController
+        popupAddress?.modalPresentationStyle = .overCurrentContext
+        popupAddress?.adresaProtocol = self
+        self.present(popupAddress!, animated: false, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         MySession.loadCart()
         
-        let imageLogo = UIImage(named: "plus")
+        let imageLogo = UIImage(named: "combo")
             // let imageView = UIImageView(image:imageLogo)
-        self.setTitleEx("Adresa ", andImage: imageLogo!)
+        self.setTitleEx("Adresa si inca ", andImage: imageLogo!, target: self, #selector(addressClicked))
         
         self.title = "Stores"
         tableViewStores.delegate = self
@@ -127,69 +142,19 @@ class StoresViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     // MARK: - Table view data source
 
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return 0
-//    }
+  
+    func addNewAddress() {
+        
+        if let pa = self.popupAddress {
+            pa.dismiss(animated: true) {
+                
+            let address:NewAddressViewController = UIStoryboard(name: "Address", bundle: nil).instantiateViewController(withIdentifier: "NewAddressViewController") as! NewAddressViewController
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+            self.navigationController?.pushViewController(address, animated: true)
 
-        // Configure the cell...
-
-        return cell
+            }
+        }
     }
-    */
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

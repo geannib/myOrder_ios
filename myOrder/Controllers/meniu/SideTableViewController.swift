@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SideTableViewController: UITableViewController {
 
@@ -32,7 +33,7 @@ class SideTableViewController: UITableViewController {
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 3
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -63,32 +64,44 @@ class SideTableViewController: UITableViewController {
         if(indexPath.section == 0){
             let cell:SideTableHeaderCellTableViewCell? = tableView.dequeueReusableCell(withIdentifier: "SideTableHeaderCellTableViewCell", for: indexPath) as? SideTableHeaderCellTableViewCell
             
-            cell?.labelTitle?.text = "Nume utilizator"
+            let currentAuth = Auth.auth()
+            let displayName = currentAuth.currentUser?.displayName
+            cell?.labelTitle?.text = displayName
             return cell!
             
         }
         if(indexPath.section == 1){
             
             var txt = ""
+            var imgName = ""
             let cell:SideTableViewCell? = tableView.dequeueReusableCell(withIdentifier: "SideTableViewCell", for: indexPath) as? SideTableViewCell
             switch indexPath.row {
             case 0:
-                txt = "Comenzile mele"
+                txt = "Magazine"
+                imgName = "store"
                 break;
                 case 1:
-                txt = "Adresele mele"
+                txt = "Comenzile mele"
+                imgName = "comenzi"
                 break;
                 case 2:
-                txt = "Produsele mele"
+                txt = "Adresele mele"
+                imgName = "home"
                 break;
                 case 3:
-                txt = "Informatii personale"
+                txt = "Produse favorite"
+                imgName = "heart_navigare"
                 break;
+                case 4:
+                txt = "Informatii personale"
+                imgName = "person"
                 case 5:
                 txt = "Invita un prieten "
+                imgName = "share"
                 break;
                 case 6:
                 txt = "Ajutor "
+                imgName = "help"
                 break;
             default:
                 txt = "NA"
@@ -99,6 +112,8 @@ class SideTableViewController: UITableViewController {
             sizes: [15],
             texts: [txt],
             alignement: .left)
+            
+            cell?.imageLeft.image = UIImage(named:imgName)
             
             
             return cell!
