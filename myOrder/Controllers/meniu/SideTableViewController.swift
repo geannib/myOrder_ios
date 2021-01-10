@@ -63,14 +63,14 @@ class SideTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if(indexPath.section == 0){
             let cell:SideTableHeaderCellTableViewCell? = tableView.dequeueReusableCell(withIdentifier: "SideTableHeaderCellTableViewCell", for: indexPath) as? SideTableHeaderCellTableViewCell
-            
+             
             let currentAuth = Auth.auth()
             let displayName = currentAuth.currentUser?.displayName
             cell?.labelTitle?.text = displayName
             return cell!
             
         }
-        if(indexPath.section == 1){
+        if(indexPath.section == 1){  
             
             var txt = ""
             var imgName = ""
