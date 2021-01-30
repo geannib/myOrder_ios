@@ -35,10 +35,10 @@ class OrderStatusViewController: UIViewController, UITableViewDataSource, UITabl
         tableStatus.dataSource = self
         
         labelTitle.generateAttributedString(fonts: ["Roboto-Bold"],
-        colors: [.gray],
-        sizes: [14],
-        texts: ["Comanda cu id #cutare  a fost plasata"],
-        alignement: .center)
+            colors: [.gray],
+            sizes: [14],
+            texts: ["Comanda cu id #cutare  a fost plasata"],
+            alignement: .center)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
