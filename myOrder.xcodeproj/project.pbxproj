@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4380FCF18780A9EC660BA926 /* Pods_myOrder_myOrderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7746A3E56AB25CCD8559B327 /* Pods_myOrder_myOrderUITests.framework */; };
 		54596836F12871AF61B9DF95 /* Pods_myOrderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C53AEF8428AF3C78AADFEE /* Pods_myOrderTests.framework */; };
+		C00239C425C4CA4300EE5663 /* UITextview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00239C325C4CA4300EE5663 /* UITextview.swift */; };
 		C00DB018259BEB20009DFC89 /* PhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DB017259BEB20009DFC89 /* PhoneViewController.swift */; };
 		C00DB01A259BEB44009DFC89 /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DB019259BEB44009DFC89 /* AgreementViewController.swift */; };
 		C00DB01C259BFB39009DFC89 /* SMSResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DB01B259BFB39009DFC89 /* SMSResponseData.swift */; };
@@ -31,6 +32,7 @@
 		C05625EC25559F79008CEEFC /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05625EB25559F79008CEEFC /* Config.swift */; };
 		C0603D0225ABB2CB00261696 /* NewAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0603D0125ABB2CB00261696 /* NewAddressViewController.swift */; };
 		C0603D0525ABB79B00261696 /* NewAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0603D0425ABB79B00261696 /* NewAddressTableViewCell.swift */; };
+		C0603D0725ABC81400261696 /* AddressMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0603D0625ABC81400261696 /* AddressMapViewController.swift */; };
 		C0865E332582A29F004F6F0F /* MySession.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0865E322582A29F004F6F0F /* MySession.swift */; };
 		C0865E352582A380004F6F0F /* MyCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0865E342582A380004F6F0F /* MyCart.swift */; };
 		C0865E372582A398004F6F0F /* MyBuyProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0865E362582A398004F6F0F /* MyBuyProduct.swift */; };
@@ -114,6 +116,7 @@
 		9A533DB32E4CE500C667CBB2 /* Pods_myOrder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_myOrder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A536737D743935766F07F8B5 /* Pods-CelentanoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CelentanoTests.release.xcconfig"; path = "Target Support Files/Pods-CelentanoTests/Pods-CelentanoTests.release.xcconfig"; sourceTree = "<group>"; };
 		BB29F49853E2159656467E92 /* Pods-myOrderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myOrderTests.release.xcconfig"; path = "Target Support Files/Pods-myOrderTests/Pods-myOrderTests.release.xcconfig"; sourceTree = "<group>"; };
+		C00239C325C4CA4300EE5663 /* UITextview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextview.swift; sourceTree = "<group>"; };
 		C00DB017259BEB20009DFC89 /* PhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneViewController.swift; sourceTree = "<group>"; };
 		C00DB019259BEB44009DFC89 /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
 		C00DB01B259BFB39009DFC89 /* SMSResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSResponseData.swift; sourceTree = "<group>"; };
@@ -142,6 +145,7 @@
 		C05625EB25559F79008CEEFC /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		C0603D0125ABB2CB00261696 /* NewAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAddressViewController.swift; sourceTree = "<group>"; };
 		C0603D0425ABB79B00261696 /* NewAddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAddressTableViewCell.swift; sourceTree = "<group>"; };
+		C0603D0625ABC81400261696 /* AddressMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressMapViewController.swift; sourceTree = "<group>"; };
 		C0865E322582A29F004F6F0F /* MySession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySession.swift; sourceTree = "<group>"; };
 		C0865E342582A380004F6F0F /* MyCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCart.swift; sourceTree = "<group>"; };
 		C0865E362582A398004F6F0F /* MyBuyProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBuyProduct.swift; sourceTree = "<group>"; };
@@ -301,6 +305,7 @@
 			children = (
 				C03374C925AB0945008322A1 /* AdressPopupViewController.swift */,
 				C0603D0125ABB2CB00261696 /* NewAddressViewController.swift */,
+				C0603D0625ABC81400261696 /* AddressMapViewController.swift */,
 			);
 			path = address;
 			sourceTree = "<group>";
@@ -486,6 +491,7 @@
 				C0989132257EDE8900CEBF7E /* Dictionary+Extension.swift */,
 				C0865E382582DCE3004F6F0F /* UserDefaultsExt.swift */,
 				C0865E432583CB5A004F6F0F /* UILabelExt.swift */,
+				C00239C325C4CA4300EE5663 /* UITextview.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -842,6 +848,7 @@
 				C09891352580259100CEBF7E /* ProductsViewController.swift in Sources */,
 				C0C1A2562561E76C001234CB /* ResponseAPIBase.swift in Sources */,
 				C03374C325A7B457008322A1 /* SaveCartResponse.swift in Sources */,
+				C0603D0725ABC81400261696 /* AddressMapViewController.swift in Sources */,
 				C0FBCEF4249BA64D0090684D /* CategoriesCollectionViewController.swift in Sources */,
 				C0FAD976259D3B52003047A3 /* FinalizareMetodaCell.swift in Sources */,
 				C0865E352582A380004F6F0F /* MyCart.swift in Sources */,
@@ -858,6 +865,7 @@
 				C0FBCEF7249BABA60090684D /* CategoryCollectionViewCell.swift in Sources */,
 				C0FAD972259D3B24003047A3 /* FinalizareHeaderCell.swift in Sources */,
 				C0FBCEFD249BC3CA0090684D /* CCaroucel.swift in Sources */,
+				C00239C425C4CA4300EE5663 /* UITextview.swift in Sources */,
 				C0CDF1AC249D2FEE006DEA48 /* ProductTableViewCell.swift in Sources */,
 				C096D2322597FD4300B3D9C3 /* MyBaseViewController.swift in Sources */,
 				C098913D258192A100CEBF7E /* MyProductDetailsViewController.swift in Sources */,
@@ -1066,7 +1074,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = RNAV2Z7GE8;
 				INFOPLIST_FILE = myOrder/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1087,7 +1095,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = RNAV2Z7GE8;
 				INFOPLIST_FILE = myOrder/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

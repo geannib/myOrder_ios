@@ -26,6 +26,13 @@ class MyProductDetailsViewController: MyBaseViewController {
     @IBOutlet weak var imgBottomPlus: UIImageView!
     @IBOutlet weak var imgBottomMinus: UIImageView!
     @IBOutlet weak var imgLogo: UIImageView!
+    @IBOutlet weak var viewTopDetails: UIView!
+    @IBOutlet weak var labelDetails: UILabel!
+    @IBOutlet weak var labelPrice: UILabel!
+    @IBOutlet weak var labelInstructionsTitle: UILabel!
+    @IBOutlet weak var txtviewInstructions: UITextView!
+    @IBOutlet weak var viewHeart: UIView!
+    @IBOutlet weak var imageHeart: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +47,8 @@ class MyProductDetailsViewController: MyBaseViewController {
         viewBottom.backgroundColor = .selgrosBackground
         viewBottomComanda.backgroundColor = .selgrosRed
         viewBottomCount.backgroundColor = .selgrosBackground
-        labelBottomComanda.text = "COMANDA"
+        viewTopDetails.backgroundColor = .clear
+        labelBottomComanda.text = "ADAUGA IN COS"
         labelBottomComanda.backgroundColor = .clear
         labelBottomComanda.textColor = .selgrosWhite
         labelBottomComanda.textAlignment = .center
@@ -58,11 +66,71 @@ class MyProductDetailsViewController: MyBaseViewController {
         imgBottomPlus.image = UIImage(named: "plus")
         imgBottomMinus.image = UIImage(named: "minus")
         
+        viewMiddle.backgroundColor = .selgrosBackground
+        
+        labelInstructionsTitle.generateAttributedString(
+            fonts: ["Roboto-Regular"],
+            colors: [.selgrosTitle],
+            sizes: [13],
+            texts: ["Instructiuni pentru alegerea produsului: "],
+            alignement: .left)
+        txtviewInstructions.layer.borderColor = UIColor.selgrosGray.cgColor
+        txtviewInstructions.clipsToBounds = true
+        txtviewInstructions.layer.cornerRadius = 10
+        txtviewInstructions.layer.borderColor = UIColor.selgrosGray.cgColor
+        txtviewInstructions.layer.borderWidth = 1
+        
+        labelDetails.numberOfLines = 2
+       
+        
         let token:String = (UserDefaults.standard.value(forKey: kUDToken) ?? "") as! String
         
+         self.txtviewInstructions.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
+        
         guard let data = selProd else {return}
+
+        labelDetails.generateAttributedString(
+            fonts: ["Roboto-Bold"],
+            colors: [.black],
+            sizes: [17],
+            texts: [data.name ?? ""],
+            alignement: .left)
+
+        var fullPrice = data.price ?? "-"
+        let slices:[String] = fullPrice.components(separatedBy: ".")
+        fullPrice += " RON"
+        if(slices.count == 2) {
+            let font:UIFont? = UIFont(name: "Roboto-Bold", size:20)
+            let fontSuper:UIFont? = UIFont(name: "Roboto-Bold", size:10)
+            let attString:NSMutableAttributedString = NSMutableAttributedString(string: fullPrice, attributes: [.font:font!])
+            attString.setAttributes([.font:fontSuper!,.baselineOffset:10],
+                                    range: NSRange(location:slices[0].count + 1, length:slices[1].count))
+            attString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.red, range: NSRange(location: 0, length: fullPrice.count))
+            
+            labelPrice.attributedText = attString
+        }
+        else{
+            labelPrice.generateAttributedString(
+                fonts: ["Roboto-Bold"],
+                colors: [.selgrosRed],
+                sizes: [17],
+                texts: [fullPrice],
+                alignement: .left)
+        }
+        
+        viewHeart.backgroundColor = .white
+        viewHeart.layer.borderColor = UIColor.selgrosGray.cgColor
+        viewHeart.clipsToBounds = true
+        viewHeart.layer.cornerRadius = 5
+        viewHeart.layer.borderColor = UIColor.selgrosGray.cgColor
+        viewHeart.layer.borderWidth = 1
+        
         let imgURL = API_GET_PRODUCT_IMAGE + "?id=" + String(data.id!) + "&firebase_uid=" + token;
         imgLogo.sd_setImage(with: URL(string: imgURL), placeholderImage: nil)
+        
+        let tapHeart = UITapGestureRecognizer(target: self, action:  #selector (self.heartTapped (_:)))
+        viewHeart.isUserInteractionEnabled = true
+        viewHeart.addGestureRecognizer(tapHeart)
         
         let tapBuy = UITapGestureRecognizer(target: self, action:  #selector (self.buyTapped (_:)))
         labelBottomComanda.isUserInteractionEnabled = true
@@ -96,6 +164,10 @@ class MyProductDetailsViewController: MyBaseViewController {
 
     }
        
+        @objc func tapDone(sender: Any) {
+            self.txtviewInstructions.endEditing(true)
+        }
+    
        // or for Swift 4
        @objc func plusTapped(_ sender:UITapGestureRecognizer){
         
@@ -114,6 +186,12 @@ class MyProductDetailsViewController: MyBaseViewController {
         }
        }
        
+    
+    // or for Swift 4
+    @objc func heartTapped(_ sender:UITapGestureRecognizer){
+        print("Favourite tapped")
+    }
+    
        // or for Swift 4
        @objc func minusTapped(_ sender:UITapGestureRecognizer){
            if ( Double(buyProd?.quantity ?? 0) > 0){

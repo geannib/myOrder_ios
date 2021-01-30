@@ -7,6 +7,8 @@
 //
 
 import Foundation
+
+let GOOGLE_KEY = "AIzaSyCMoCZwlT2yYX3i2joIThogLwqtXgbqSfg"
 let BASE_URL = "https://www.dozo.ro/";
 let API_URL = BASE_URL + "clientapi/"
 

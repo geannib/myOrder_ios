@@ -14,9 +14,6 @@ protocol AdresaProtocol: NSObjectProtocol {
     
 }
 class AdressPopupViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    
-    
 
     @IBOutlet weak var viewMiddle: UIView!
     @IBOutlet weak var labelNext: UILabel!

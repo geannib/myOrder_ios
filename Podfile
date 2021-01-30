@@ -16,11 +16,12 @@ target 'myOrder' do
   pod 'Firebase/Crashlytics'
   pod 'Firebase/Auth'
   pod 'GoogleSignIn'
-  pod 'SDWebImage'
   pod 'BarcodeScanner'
   pod 'BadgeHub'
   pod 'PhoneNumberKit'
   pod 'JVFloatLabeledTextField'
+  pod 'GoogleMaps', '4.1.0'
+  pod 'GooglePlaces', '4.1.0'
 
   target 'myOrderTests' do
     inherit! :search_paths

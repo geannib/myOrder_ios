@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "delivery_inactiv.png",
+      "filename" : "heart_empty.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "delivery_inactiv-1.png",
+      "filename" : "heart_empty-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "delivery_inactiv-2.png",
+      "filename" : "heart_empty-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

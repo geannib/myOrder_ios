@@ -23,6 +23,7 @@ class NewAddressViewController: UIViewController, UITableViewDataSource, UITable
         tableNewAddress.delegate = self
         
         makeup()
+        handlers()
         
         // Do any additional setup after loading the view.
     }
@@ -36,6 +37,21 @@ class NewAddressViewController: UIViewController, UITableViewDataSource, UITable
         self.title = ""
     }
 
+    @objc func nextTapped(_ sender:UITapGestureRecognizer){
+           
+            let mapView:AddressMapViewController =
+            UIStoryboard(name: "Address", bundle: nil).instantiateViewController(withIdentifier: "AddressMapViewController") as! AddressMapViewController
+            self.navigationController?.pushViewController(mapView, animated: true)
+       }
+    
+    func handlers(){
+    
+        imageLocation.isUserInteractionEnabled = true
+        let tapNext = UITapGestureRecognizer(target: self, action:  #selector (self.nextTapped (_:)))
+        tapNext.numberOfTapsRequired = 1
+        imageLocation.addGestureRecognizer(tapNext)
+    }
+    
     func makeup(){
         
         tableNewAddress.separatorStyle = .none

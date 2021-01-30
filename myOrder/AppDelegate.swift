@@ -11,6 +11,8 @@ import Firebase
 import SideMenu
 import GoogleSignIn
 import FirebaseAuth
+import GoogleMaps
+import GooglePlaces
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -27,6 +29,10 @@ var window: UIWindow?
          FirebaseApp.configure()
         
          Thread.sleep(forTimeInterval: 2.0)
+        
+        // Using google maps and google services
+        GMSServices.provideAPIKey(GOOGLE_KEY)
+        GMSPlacesClient.provideAPIKey(GOOGLE_KEY)
         
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
