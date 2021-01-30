@@ -35,6 +35,26 @@ class StoresViewController: UIViewController,
         MySession.selStoreId = String(sp.id ?? 0)
         categories.selCat = ""
         categories.storeId = "" + String(sp.id!)
+        let token:String = (UserDefaults.standard.value(forKey: kUDToken) ?? "") as! String
+        let parameters:[String: String] = ["firebase_uid": token,
+                                           "store_id": String(sp.id!)]
+        
+        WebWrapper.shared.callAPI(reqType:API_GET_ALL_FAVORITE_PRODUCT,
+                                  parameters: parameters,
+                                  methodType: .post,
+                                  showLoader: false,
+                                  completion: { (responseType, response, error) in
+            
+            print("call done")
+            guard let _ = error else{
+                print("error  occured on calling \(API_GET_ALL_FAVORITE_PRODUCT): \(error.debugDescription)")
+                return;
+            }
+                                    
+            let reqResponse: MyFavProductResponse = MyFavProductResponse(JSONString: response ?? "")!
+            MySession.prodFavs = reqResponse.prodFavs ?? []
+                                    
+        })
         self.navigationController?.pushViewController(categories, animated: true)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

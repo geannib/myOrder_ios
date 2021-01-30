@@ -18,6 +18,9 @@ let API_GET_PRODUCTS  = API_URL + "getproducts"
 let API_SEND_SMS = API_URL + "sendsmscode"
 let API_VALIDATE_SMS = API_URL + "validateSMSCode"
 let API_SAVE_CART = API_URL + "savecart"
+let API_SAVE_FAVORITE_PRODUCT = API_URL + "savefavoritelistproduct"
+let API_REMOVE_FAVORITE_PRODUCT = API_URL + "removefavoritelistproduct"
+let API_GET_ALL_FAVORITE_PRODUCT = API_URL + "getallfavoriteproducts"
 
 // Images
 let API_GET_STORE_IMAGE = API_URL + "getstoreimage"

@@ -125,6 +125,14 @@ class MyProductDetailsViewController: MyBaseViewController {
         viewHeart.layer.borderColor = UIColor.selgrosGray.cgColor
         viewHeart.layer.borderWidth = 1
         
+        let products = MySession.myCart?.products ?? []
+        for p in products {
+           if (p.prodId == selProd?.id){
+               buyProd = p
+               break;
+           }
+        }
+        
         let imgURL = API_GET_PRODUCT_IMAGE + "?id=" + String(data.id!) + "&firebase_uid=" + token;
         imgLogo.sd_setImage(with: URL(string: imgURL), placeholderImage: nil)
         
@@ -145,13 +153,7 @@ class MyProductDetailsViewController: MyBaseViewController {
         imgBottomMinus.addGestureRecognizer(tapMinus)
         
         buyProd = MyBuyProduct()
-        let products = MySession.myCart?.products ?? []
-        for p in products {
-            if (p.prodId == selProd?.id){
-                buyProd = p
-                break;
-            }
-        }
+        setFavImage()
     
         let adjustQ = buyProd?.quantity ?? 0
         
@@ -190,6 +192,72 @@ class MyProductDetailsViewController: MyBaseViewController {
     // or for Swift 4
     @objc func heartTapped(_ sender:UITapGestureRecognizer){
         print("Favourite tapped")
+        let token:String = (UserDefaults.standard.value(forKey: kUDToken) ?? "") as! String
+        let parameters:[String: String] = ["firebase_uid": token,
+                                           "product_id" : String(selProd?.id ?? 0),
+                                           "store_id": MySession.selStoreId ?? "",
+                                           "quantity" : String(buyProd?.quantity ?? 0)]
+        
+        var found = false
+        for p in MySession.prodFavs {
+            if (p.idProd == selProd?.id){
+                found = true
+                break
+            }
+        }
+        
+        var apiCall = API_SAVE_FAVORITE_PRODUCT
+        if(found == true){
+            apiCall = API_REMOVE_FAVORITE_PRODUCT
+        }
+        
+        WebWrapper.shared.callAPI(reqType:apiCall,
+                                  parameters: parameters,
+                                  methodType: .post,
+                                  showLoader: false,
+                                  completion: { (responseType, response, error) in
+            
+                    print("call done")
+                    let reqResponse: SaveFavProdResponse = SaveFavProdResponse(JSONString: response ?? "")!
+                    if(reqResponse.data == true){
+                        print(" fav product on \(apiCall) is true")
+                        self.refreshFavList()
+                    }
+                                    
+        })
+    }
+    
+    func setFavImage(){
+
+        imageHeart.image = UIImage(named: "heart_empty")
+        for p in MySession.prodFavs {
+            if (p.idProd == selProd?.id){
+                imageHeart.image = UIImage(named: "heart_red")
+            }
+        }
+    }
+    func refreshFavList(){
+        let token:String = (UserDefaults.standard.value(forKey: kUDToken) ?? "") as! String
+        let parameters:[String: String] = ["firebase_uid": token,
+                                           "store_id": String(MySession.selStoreId ?? "")]
+        
+        WebWrapper.shared.callAPI(reqType:API_GET_ALL_FAVORITE_PRODUCT,
+                                  parameters: parameters,
+                                  methodType: .post,
+                                  showLoader: false,
+                                  completion: { (responseType, response, error) in
+            
+            print("call done")
+            guard let _ = error else{
+                print("error  occured on calling \(API_GET_ALL_FAVORITE_PRODUCT): \(error.debugDescription)")
+                return;
+            }
+                                    
+            let reqResponse: MyFavProductResponse = MyFavProductResponse(JSONString: response ?? "")!
+            MySession.prodFavs = reqResponse.prodFavs ?? []
+                                    self.setFavImage()
+                                    
+        })
     }
     
        // or for Swift 4
@@ -204,13 +272,12 @@ class MyProductDetailsViewController: MyBaseViewController {
     // or for Swift 4
     @objc func buyTapped(_ sender:UITapGestureRecognizer){
         
-        let buyProd = MyBuyProduct()
-        buyProd.prodId = selProd?.id as! Int
-        buyProd.quantity = Int(labelBottomCount.text ?? "0")!
-        buyProd.description = selProd?.name! as! String
-        buyProd.price = Double(selProd?.price ?? "0.0") ?? 0.0
+//        buyProd.prodId = selProd?.id as! Int
+//        buyProd.quantity = Int(labelBottomCount.text ?? "0")!
+//        buyProd.description = selProd?.name! as! String
+//        buyProd.price = Double(selProd?.price ?? "0.0") ?? 0.0
         
-        MySession.myCart?.addProduct(prod: buyProd)
+        MySession.myCart?.addProduct(prod: buyProd!)
         MySession.saveCart()
         
         //Update cart badge TODO

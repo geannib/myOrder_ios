@@ -10,6 +10,8 @@
 		4380FCF18780A9EC660BA926 /* Pods_myOrder_myOrderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7746A3E56AB25CCD8559B327 /* Pods_myOrder_myOrderUITests.framework */; };
 		54596836F12871AF61B9DF95 /* Pods_myOrderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C53AEF8428AF3C78AADFEE /* Pods_myOrderTests.framework */; };
 		C00239C425C4CA4300EE5663 /* UITextview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00239C325C4CA4300EE5663 /* UITextview.swift */; };
+		C00239C625C4D4AB00EE5663 /* SaveFavProdResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00239C525C4D4AB00EE5663 /* SaveFavProdResponse.swift */; };
+		C00239C825C4DB2D00EE5663 /* MyFavProductResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00239C725C4DB2D00EE5663 /* MyFavProductResponse.swift */; };
 		C00DB018259BEB20009DFC89 /* PhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DB017259BEB20009DFC89 /* PhoneViewController.swift */; };
 		C00DB01A259BEB44009DFC89 /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DB019259BEB44009DFC89 /* AgreementViewController.swift */; };
 		C00DB01C259BFB39009DFC89 /* SMSResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00DB01B259BFB39009DFC89 /* SMSResponseData.swift */; };
@@ -117,6 +119,8 @@
 		A536737D743935766F07F8B5 /* Pods-CelentanoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CelentanoTests.release.xcconfig"; path = "Target Support Files/Pods-CelentanoTests/Pods-CelentanoTests.release.xcconfig"; sourceTree = "<group>"; };
 		BB29F49853E2159656467E92 /* Pods-myOrderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myOrderTests.release.xcconfig"; path = "Target Support Files/Pods-myOrderTests/Pods-myOrderTests.release.xcconfig"; sourceTree = "<group>"; };
 		C00239C325C4CA4300EE5663 /* UITextview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextview.swift; sourceTree = "<group>"; };
+		C00239C525C4D4AB00EE5663 /* SaveFavProdResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFavProdResponse.swift; sourceTree = "<group>"; };
+		C00239C725C4DB2D00EE5663 /* MyFavProductResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFavProductResponse.swift; sourceTree = "<group>"; };
 		C00DB017259BEB20009DFC89 /* PhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneViewController.swift; sourceTree = "<group>"; };
 		C00DB019259BEB44009DFC89 /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
 		C00DB01B259BFB39009DFC89 /* SMSResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSResponseData.swift; sourceTree = "<group>"; };
@@ -479,6 +483,8 @@
 				C098913A2580272700CEBF7E /* ProductsReponseData.swift */,
 				C00DB01B259BFB39009DFC89 /* SMSResponseData.swift */,
 				C03374C225A7B456008322A1 /* SaveCartResponse.swift */,
+				C00239C525C4D4AB00EE5663 /* SaveFavProdResponse.swift */,
+				C00239C725C4DB2D00EE5663 /* MyFavProductResponse.swift */,
 			);
 			path = rest;
 			sourceTree = "<group>";
@@ -851,6 +857,7 @@
 				C0603D0725ABC81400261696 /* AddressMapViewController.swift in Sources */,
 				C0FBCEF4249BA64D0090684D /* CategoriesCollectionViewController.swift in Sources */,
 				C0FAD976259D3B52003047A3 /* FinalizareMetodaCell.swift in Sources */,
+				C00239C625C4D4AB00EE5663 /* SaveFavProdResponse.swift in Sources */,
 				C0865E352582A380004F6F0F /* MyCart.swift in Sources */,
 				C0C1A2542561E5EF001234CB /* RestaurantsResponseData.swift in Sources */,
 				C0FBCEFA249BB8B90090684D /* CategoryPojo.swift in Sources */,
@@ -899,6 +906,7 @@
 				C053B13A24912FE3002BBF45 /* SceneDelegate.swift in Sources */,
 				C0CDF1A6249D2DA1006DEA48 /* SideTableViewController.swift in Sources */,
 				C0865E442583CB5B004F6F0F /* UILabelExt.swift in Sources */,
+				C00239C825C4DB2D00EE5663 /* MyFavProductResponse.swift in Sources */,
 				C0FAD96D259D307A003047A3 /* FinalizareViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,6 +12,7 @@ class MySession {
     
     public static var myCart:MyCart? = nil
     public static var selStoreId:String? = nil
+    public static var prodFavs:[FavProductPOJO] = []
     
     public static func saveCart(){
         
