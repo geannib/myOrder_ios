@@ -248,8 +248,8 @@ class MyProductDetailsViewController: MyBaseViewController {
                                   completion: { (responseType, response, error) in
             
             print("call done")
-            guard let _ = error else{
-                print("error  occured on calling \(API_GET_ALL_FAVORITE_PRODUCT): \(error.debugDescription)")
+            if let _ = error {
+                print("error  occured on calling \(API_GET_ALL_FAVORITE_PRODUCT): \(error)")
                 return;
             }
                                     

@@ -46,7 +46,7 @@ class StoresViewController: UIViewController,
                                   completion: { (responseType, response, error) in
             
             print("call done")
-            guard let _ = error else{
+            if let _ = error {
                 print("error  occured on calling \(API_GET_ALL_FAVORITE_PRODUCT): \(error.debugDescription)")
                 return;
             }
@@ -54,8 +54,10 @@ class StoresViewController: UIViewController,
             let reqResponse: MyFavProductResponse = MyFavProductResponse(JSONString: response ?? "")!
             MySession.prodFavs = reqResponse.prodFavs ?? []
                                     
+            self.navigationController?.pushViewController(categories, animated: true)
+                                    
         })
-        self.navigationController?.pushViewController(categories, animated: true)
+        
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
